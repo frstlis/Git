@@ -34,7 +34,7 @@ $ git clone username@host:/path/to/repository
 
 10、工作目录下的文件的四种状态：untracked、unmodified、modified、staged。仓库中包含各个时间点的文件快照。
 
-![](https://i.imgur.com/3aaDbW7.png)
+![如图所示](https://i.imgur.com/3aaDbW7.png)
 
 ### 二、Git 操作命令：
 
