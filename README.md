@@ -1,6 +1,6 @@
-#Git、GitHub 使用说明
+# Git、GitHub 使用说明
 
-###一、预备知识：
+### 一、预备知识：
 
 1、GitHub是一个基于git的代码托管平台。通过Github可以实现社会化编程。
 
@@ -36,7 +36,8 @@ $ git clone username@host:/path/to/repository
 
 ![](https://i.imgur.com/3aaDbW7.png)
 
-二、Git 操作命令：
+### 二、Git 操作命令：
+
 1、git init：把文件目录变成git可以管理的仓库。Initialized empty Git repository in d:/www/testgit/.git/
 
 2、`git add`：把文件添加到暂存区
@@ -74,7 +75,8 @@ $ git log –pretty=oneline
 
  
 
-三、Git版本管理系统中“分支”概念
+### 三、Git版本管理系统中“分支”概念
+
 分支基本知识：
 分支：分支是用来将特性开发绝缘开来的。在用户创建仓库的时候，master 是"默认的"分支。用户可以在其他分支上进行开发，经过审核，完成后再将它们合并到主分支上。
 
@@ -131,7 +133,8 @@ stash功能：
 
 4、命令 `git stash pop`：恢复文件的同时 也删除文件
 
-四、远程仓库（默认名称是origin）：
+### 四、远程仓库（默认名称是origin）：
+
 1、Github仓库和本地的Git仓库之间通过SSH互访和信息交换。本地需要创建SSH key。“youremail@example.com”是用户注册GitHub绑定的邮箱。
 
 `ssh-keygen  -t rsa –C “youremail@example.com”`
