@@ -32,46 +32,45 @@ $ git clone username@host:/path/to/repository
 
 10、工作目录下的文件的四种状态：untracked、unmodified、modified、staged。仓库中包含各个时间点的文件快照。
 
-![如图：](C:\Users\admin\Hacker\CLanguage\Image\Help\git.account.png)
+![如图：](https://github.com/frstlis/Git/blob/master/Image/Help/git.account.png)
 
  
 
 二、Git 操作命令：
 1、git init：把文件目录变成git可以管理的仓库。Initialized empty Git repository in d:/www/testgit/.git/
 
-2、git add：把文件添加到暂存区
+2、`git add`：把文件添加到暂存区
 
-3、git commit -m：把文件提交到仓库。git commit输入提交信息的时候，通过调用vim编辑器进行信息编写的，使用vim编辑器的命令操作。
+3、`git commit -m`：把文件提交到仓库。git commit输入提交信息的时候，通过调用vim编辑器进行信息编写的，使用vim编辑器的命令操作。
 
-　　提交信息的格式：第一行：用一行文字简述提交的内容；第二行：空行；第三行以后：记述更改的原因和详细内容
+提交信息的格式：第一行：用一行文字简述提交的内容；第二行：空行；第三行以后：记述更改的原因和详细内容
 
-　　git commit --amend：修改提交信息
+`git commit --amend`：修改提交信息
 
-　　git rebase -i HEAD-2：压缩历史。选定当前分支中包含的HEAD（最新提交）在内的两条最新历史记录为对象，打开编辑器，在内容编辑器中将pick>>fixup。
+`git rebase -i HEAD-2`：压缩历史。选定当前分支中包含的HEAD（最新提交）在内的两条最新历史记录为对象，打开编辑器，在内容编辑器中将pick>>fixup。
 
-4、git status：查看仓库的状态，查看文件提交队列中是否还有未提交文件，跟踪文件是否发生变化
+4、`git status`：查看仓库的状态，查看文件提交队列中是否还有未提交文件，跟踪文件是否发生变化
 
-5、git diff：查看工作树和暂存区的差别；git diff HEAD 查看工作树和最新提交的差别
+5、`git diff`：查看工作树和暂存区的差别；git diff HEAD 查看工作树和最新提交的差别
 
-6、git log：查看提交日志，显示从最近到最远的提交日志
+6、`git log`：查看提交日志，显示从最近到最远的提交日志
 
-1
-2
-3
+```markdown
 $ git log
  
 $ git log –pretty=oneline
-7、git reset  --hard HEAD^：把当前的版本回退到上一个版本；hard HEAD^：上一个版本、hard HEAD^^：上上一个版本、hard HEAD~100：前100个版本
+```
+7、`git reset  --hard HEAD^`：把当前的版本回退到上一个版本；hard HEAD^：上一个版本、hard HEAD^^：上上一个版本、hard HEAD~100：前100个版本
 
-8、git reflog：查看当前仓库的操作日志，包括：commit、reset、checkout、merge等操作的日志
+8、`git reflog`：查看当前仓库的操作日志，包括：**commit、reset、checkout、merge**等操作的日志
 
-9、git reset  --hard 目标时间点的哈希值：根据目标时间点的哈希值，将文件置为指定版本。
+9、`git reset  --hard` 目标时间点的哈希值：根据目标时间点的哈希值，将文件置为指定版本。
 
-10、git branch feature-A：创建feature-A分支
+10、`git branch feature-A`：创建feature-A分支
 
-11、git checkout  feature-A：切换到feature-A分支
+11、`git checkout  feature-A`：切换到feature-A分支
 
-12、git checkout  -b feature-A：创建并切换到feature-A分支
+12、`git checkout  -b feature-A`：创建并切换到feature-A分支
 
  
 
@@ -84,26 +83,31 @@ $ git log –pretty=oneline
 分支操作：
 1、创建分支,–b参数表示创建并切换分支，相当于执行：git branch feature_x+git checkout feature_x两条指令，直接在已有的分支中切换不需要增加-b参数。
 
-1
+```markdown
 $ git checkout -b feature_x
+```
 2、查看分支，带星号为当前分支
 
-1
+```markdown
 $ git branch
+```
 3、合并分支，将在分支feature_v中发生的修改合并到主分支master中。合并时只是将master指针指向feature_v。
 
-1
+```markdown
 $ git merge feature_v
+```
 4、删除分支
 
-1
+```markdown
 $ git branch -d feature_v
+```
+
 分支管理策略：
 1、“Fast forward”模式（“快进模式”）：直接把master指向feature_v的当前提交，所以合并速度非常快。在这种模式下，删除分支后，会丢掉分支信息。
 
 2、参数 –no-ff来禁用”Fast forward”模式，删除分支后，被删除的分支信息还在。
 
-3、git merge --no-ff feature-C，在分支master中整合feature-C分支。
+3、`git merge --no-ff feature-C`，在分支master中整合feature-C分支。
 
 分支冲突：
 1、分支冲突发生情况：在不同的分支上都对同一个文件进行修改并且都提交修改。
@@ -112,58 +116,62 @@ $ git branch -d feature_v
 
 3、在合并之前可以改通过以下命令预览差异：
 
-1
+```markdown
 git diff <source_branch> <target_branch>
+```
+
 stash功能：
-0、命令 git stash 把当前的工作隐藏起来 等以后恢复现场后继续工作
+0、命令 `git stash` 把当前的工作隐藏起来 等以后恢复现场后继续工作
 
-1、命令 git stash list：查看所有被隐藏的文件列表
+1、命令 `git stash list`：查看所有被隐藏的文件列表
 
-2、命令 git stash apply：恢复被隐藏的文件，但是内容不删除
+2、命令 `git stash apply`：恢复被隐藏的文件，但是内容不删除
 
-3、命令 git stash drop：删除文件
+3、命令 `git stash drop`：删除文件
 
-4、命令 git stash pop：恢复文件的同时 也删除文件
+4、命令 `git stash pop`：恢复文件的同时 也删除文件
 
  
 
 四、远程仓库（默认名称是origin）：
 1、Github仓库和本地的Git仓库之间通过SSH互访和信息交换。本地需要创建SSH key。“youremail@example.com”是用户注册GitHub绑定的邮箱。
 
-1
-ssh-keygen  -t rsa –C “youremail@example.com”
+`ssh-keygen  -t rsa –C “youremail@example.com”`
+
  注：以上指令执行完成后，~/下生成.ssh文件夹。文件夹中有id_rsa和id_rsa.pub这两个文件。id_rsa是私钥，id_rsa.pub是公钥。添加id_rsa.pub中的公钥到GitHub中settings中的Account Settings（账户配置），左边选择SSH Keys，Add SSH Key。
 
 2、GitHub创建一个仓库和本地的Git仓库同步。GitHub仓库作为本地Git仓库的备份，又可以使其他人通过对GitHub仓库执行命令实现对本地Git仓库进行协作。
 2.1、通过以下命令将本地Git仓库的内容推送给GitHub仓库，通过命令 git remote –v：查看远程库的详细信息
 
-1
-$ git remote add origin https://github.com/minboyin/testgit.git
+`$ git remote add origin https://github.com/minboyin/testgit.git`
+
 2.2、获取最新远程仓库分支
 
-1
-$ git pull  origin feature-A
+`$ git pull  origin feature-A`
+
 注：如果是新建的仓库（ repositories ）的话在pull代码的时候，出现：fatal: Couldn't find remote ref master 翻译过来就是：致命的：无法找到远程参考主，可以忽略不计，直接提交就可以。
 
 2.3、将本地Git仓库指定分支推送到GitHub，-u参数：将origin仓库中的master分支设置为本地仓库当前分支的upstream（上游），一般选择本地的master分支！本地仓库当前分支可以直接从origin仓库的master分支获取内容，省去添加参数的麻烦。
 
-1
-$ git push -u origin master
+`$ git push -u origin master`
+
 2.4、将远程的仓库（GitHub中的仓库）克隆到本地，建立一个一致的本地仓库。执行完成默认在master分支。
 
-1
-$ git clone https://github.com/minboyin/testgit.git
+`$ git clone https://github.com/minboyin/testgit.git`
+
  2.5、将远程的仓库（origin仓库）中的一个分支复制到本地，建立一个一致的本地分支。-b参数后面是本地分支名称
 
-1
-$ git checkout -b feature-A origin/feature-A
+`$ git checkout -b feature-A origin/feature-A`
 3、远程协作工作模式：
-1、首先，可以试图用git push origin branch-name推送本用户在该分区的修改。
+1、首先，可以试图用`git push origin branch-name`推送本用户在该分区的修改。
 
-2、如果推送失败，则因为远程分支比你的本地更新早，需要先用git pull试图合并。git pull --rebase origin master。
+2、如果推送失败，则因为远程分支比你的本地更新早，需要先用git pull试图合并。`git pull --rebase origin master`。
 
-　　2.1、–-rebase：取消本地库中刚刚的commit，并把他们接到更新后的版本库中。
+　　2.1、 
+        **–-rebase**：取消本地库中刚刚的commit，并把他们接到更新后的版本库中。
 
-　　2.2、git pull=git fetch+git merge：git fetch是将远程主机的最新内容拉到本地，git pull则是将远程主机的最新内容拉下来后直接合并。
+　　2.2、 
+        `git pull` = `git fetch+git merge：git fetch`
+是将远程主机的最新内容拉到本地，git pull则是将远程主机的最新内容拉下来后直接合并。
 
-3、如果合并有冲突，则需要查看并解决冲突，并在本地提交。再用git push origin branch-name推送本用户在该分区的修改。
+3、如果合并有冲突，则需要查看并解决冲突，并在本地提交。再用`git push origin branch-name`推送本用户在该分区的修改。
